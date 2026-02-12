@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF94A0522F3E6484001781EF /* MappedDrive.icon in Resources */ = {isa = PBXBuildFile; fileRef = FF94A0512F3E6484001781EF /* MappedDrive.icon */; };
 		FF94A0532F3E6484001781EF /* MappedDrive.icon in Resources */ = {isa = PBXBuildFile; fileRef = FF94A0512F3E6484001781EF /* MappedDrive.icon */; };
+		FF94A0AC2F3E753B001781EF /* MappedDriveHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF94A0972F3E7533001781EF /* MappedDriveHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,15 +19,16 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
+				FF94A0AC2F3E753B001781EF /* MappedDriveHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF949FF02F3E5485001781EF /* MappedDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MappedDrive.app; path = "/Users/georgebabichev/Developer/Apps-Code/MappedDrive/build/Debug/MappedDrive.app"; sourceTree = "<absolute>"; };
-		FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MappedDriveHelper.app; path = "/Users/georgebabichev/Developer/Apps-Code/MappedDrive/build/Debug/MappedDriveHelper.app"; sourceTree = "<absolute>"; };
 		FF94A0512F3E6484001781EF /* MappedDrive.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = MappedDrive.icon; sourceTree = "<group>"; };
+		FF94A0962F3E7533001781EF /* MappedDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF94A0972F3E7533001781EF /* MappedDriveHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDriveHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -66,6 +68,8 @@
 				FF949FF22F3E5485001781EF /* MappedDrive */,
 				FF94A0292F3E5A6D001781EF /* MappedDriveHelper */,
 				FF94A0512F3E6484001781EF /* MappedDrive.icon */,
+				FF94A0962F3E7533001781EF /* MappedDrive.app */,
+				FF94A0972F3E7533001781EF /* MappedDriveHelper.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,7 +96,7 @@
 			packageProductDependencies = (
 			);
 			productName = MappedDrive;
-			productReference = FF949FF02F3E5485001781EF /* MappedDrive.app */;
+			productReference = FF94A0962F3E7533001781EF /* MappedDrive.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FF94A0272F3E5A6D001781EF /* MappedDriveHelper */ = {
@@ -114,7 +118,7 @@
 			packageProductDependencies = (
 			);
 			productName = MappedDriveHelper;
-			productReference = FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */;
+			productReference = FF94A0972F3E7533001781EF /* MappedDriveHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
