@@ -21,7 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("SMB Shares")
+            Text("Mapped Drives")
                 .font(.headline)
 
             if shareStore.shares.isEmpty {
@@ -64,11 +64,17 @@ struct ContentView: View {
             TextField("Display name", text: $shareStore.newShareName)
                 .textFieldStyle(.roundedBorder)
 
-            TextField("smb://server/share or server/share", text: $shareStore.newShareAddress)
-                .textFieldStyle(.roundedBorder)
-                .onSubmit {
-                    shareStore.addShare()
+            HStack(spacing: 8) {
+                TextField("smb://server/share or server/share", text: $shareStore.newShareAddress)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        shareStore.addShare()
+                    }
+
+                Button("Open") {
+                    openSharePicker()
                 }
+            }
 
             SettingsRow("Start on Login", subtitle: "Starts app during logon.") {
                 Toggle("", isOn: $isChecked)
@@ -142,5 +148,22 @@ struct ContentView: View {
         }
         alert.alertStyle = .warning            // Set alert style (yellow exclamation)
         alert.runModal()                       // Display the alert as a modal dialog
+    }
+
+    private func openSharePicker() {
+        let panel = NSOpenPanel()
+        panel.title = "Select Share"
+        panel.message = "Choose a network share folder to save."
+        panel.prompt = "Save Share"
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = false
+        panel.allowsMultipleSelection = false
+
+        guard panel.runModal() == .OK, let selectedURL = panel.url else {
+            return
+        }
+
+        shareStore.addShare(fromSelectedURL: selectedURL)
     }
 }

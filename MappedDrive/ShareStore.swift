@@ -31,16 +31,20 @@ final class ShareStore: ObservableObject {
         let name = newShareName.trimmingCharacters(in: .whitespacesAndNewlines)
         let address = newShareAddress.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        guard !name.isEmpty, !address.isEmpty else {
-            errorMessage = "Both name and share address are required."
-            return
-        }
+        addShare(name: name, address: address, bookmarkData: nil, clearDrafts: true)
+    }
 
-        shares.append(SMBShare(name: name, address: address))
-        newShareName = ""
-        newShareAddress = ""
-        errorMessage = nil
-        saveShares()
+    func addShare(fromSelectedURL url: URL) {
+        let typedName = newShareName.trimmingCharacters(in: .whitespacesAndNewlines)
+        let defaultName = url.lastPathComponent.isEmpty ? "Network Share" : url.lastPathComponent
+        let resolvedName = typedName.isEmpty ? defaultName : typedName
+        let address = persistentAddress(for: url)
+        let bookmarkData = try? url.bookmarkData(
+            options: [.withSecurityScope],
+            includingResourceValuesForKeys: nil,
+            relativeTo: nil
+        )
+        addShare(name: resolvedName, address: address, bookmarkData: bookmarkData, clearDrafts: false)
     }
 
     func remove(_ share: SMBShare) {
@@ -70,6 +74,51 @@ final class ShareStore: ObservableObject {
         } catch {
             errorMessage = "Couldn't save shares. \(error.localizedDescription)"
         }
+    }
+
+    private func addShare(name: String, address: String, bookmarkData: Data?, clearDrafts: Bool) {
+        guard !name.isEmpty, !address.isEmpty else {
+            errorMessage = "Both name and share address are required."
+            return
+        }
+
+        shares.append(SMBShare(name: name, address: address, bookmarkData: bookmarkData))
+        if clearDrafts {
+            newShareName = ""
+            newShareAddress = ""
+        }
+        errorMessage = nil
+        saveShares()
+    }
+
+    private func persistentAddress(for selectedURL: URL) -> String {
+        guard selectedURL.isFileURL else {
+            return selectedURL.absoluteString
+        }
+
+        guard
+            let resourceValues = try? selectedURL.resourceValues(forKeys: [.volumeURLForRemountingKey]),
+            let remountURL = resourceValues.volumeURLForRemounting,
+            let scheme = remountURL.scheme?.lowercased(),
+            scheme == "smb"
+        else {
+            return selectedURL.absoluteString
+        }
+
+        let pathComponents = selectedURL.standardizedFileURL.pathComponents
+        let relativeComponents: ArraySlice<String>
+        if pathComponents.count >= 3 && pathComponents[1] == "Volumes" {
+            relativeComponents = pathComponents.dropFirst(3)
+        } else {
+            relativeComponents = []
+        }
+
+        var fullURL = remountURL
+        for component in relativeComponents where !component.isEmpty && component != "/" {
+            fullURL.appendPathComponent(component)
+        }
+
+        return fullURL.absoluteString
     }
 
     private func loadShares() {

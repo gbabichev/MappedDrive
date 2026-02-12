@@ -11,11 +11,13 @@ struct SMBShare: Codable, Identifiable, Equatable {
     let id: UUID
     var name: String
     var address: String
+    var bookmarkData: Data?
 
-    init(id: UUID = UUID(), name: String, address: String) {
+    init(id: UUID = UUID(), name: String, address: String, bookmarkData: Data? = nil) {
         self.id = id
         self.name = name
         self.address = address
+        self.bookmarkData = bookmarkData
     }
 
     var trimmedAddress: String {
