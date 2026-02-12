@@ -7,7 +7,7 @@
 </picture>
 <br/><br/>
 
-<h2>MappedDrive is a lightweight macOS menu bar app for saving and opening SMB shares quickly.<br></h2>
+<h2>MappedDrive is a lightweight macOS app for opening SMB shares quickly.<br></h2>
 <br><br>
 
 </div>
