@@ -34,15 +34,19 @@ struct ContentView: View {
                         Button {
                             shareStore.open(share)
                         } label: {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(share.name)
-                                    .font(.body)
-                                Text(share.displayAddress)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+                            HStack {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(share.name)
+                                        .font(.body)
+                                    Text(share.displayAddress)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer(minLength: 0)
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .buttonStyle(.plain)
 
                         Button(role: .destructive) {
