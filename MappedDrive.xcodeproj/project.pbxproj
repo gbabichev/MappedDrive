@@ -6,8 +6,26 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FF94A0342F3E5A9D001781EF /* MappedDriveHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF94A0332F3E5A84001781EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				FF94A0342F3E5A9D001781EF /* MappedDriveHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		FF949FF02F3E5485001781EF /* MappedDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDriveHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +34,22 @@
 			path = MappedDrive;
 			sourceTree = "<group>";
 		};
+		FF94A0292F3E5A6D001781EF /* MappedDriveHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MappedDriveHelper;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FF949FED2F3E5485001781EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF94A0252F3E5A6D001781EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				FF949FF22F3E5485001781EF /* MappedDrive */,
+				FF94A0292F3E5A6D001781EF /* MappedDriveHelper */,
 				FF949FF12F3E5485001781EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				FF949FF02F3E5485001781EF /* MappedDrive.app */,
+				FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,6 +87,7 @@
 				FF949FEC2F3E5485001781EF /* Sources */,
 				FF949FED2F3E5485001781EF /* Frameworks */,
 				FF949FEE2F3E5485001781EF /* Resources */,
+				FF94A0332F3E5A84001781EF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -70,6 +103,28 @@
 			productReference = FF949FF02F3E5485001781EF /* MappedDrive.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FF94A0272F3E5A6D001781EF /* MappedDriveHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF94A0302F3E5A6E001781EF /* Build configuration list for PBXNativeTarget "MappedDriveHelper" */;
+			buildPhases = (
+				FF94A0242F3E5A6D001781EF /* Sources */,
+				FF94A0252F3E5A6D001781EF /* Frameworks */,
+				FF94A0262F3E5A6D001781EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FF94A0292F3E5A6D001781EF /* MappedDriveHelper */,
+			);
+			name = MappedDriveHelper;
+			packageProductDependencies = (
+			);
+			productName = MappedDriveHelper;
+			productReference = FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +136,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					FF949FEF2F3E5485001781EF = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					FF94A0272F3E5A6D001781EF = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,6 +158,7 @@
 			projectRoot = "";
 			targets = (
 				FF949FEF2F3E5485001781EF /* MappedDrive */,
+				FF94A0272F3E5A6D001781EF /* MappedDriveHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -112,10 +171,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF94A0262F3E5A6D001781EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF949FEC2F3E5485001781EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF94A0242F3E5A6D001781EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -311,6 +384,74 @@
 			};
 			name = Release;
 		};
+		FF94A0312F3E5A6E001781EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7GK58M2353;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.georgebabichev.MappedDriveHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FF94A0322F3E5A6E001781EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7GK58M2353;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.georgebabichev.MappedDriveHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -328,6 +469,15 @@
 			buildConfigurations = (
 				FF949FFC2F3E5486001781EF /* Debug */,
 				FF949FFD2F3E5486001781EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF94A0302F3E5A6E001781EF /* Build configuration list for PBXNativeTarget "MappedDriveHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF94A0312F3E5A6E001781EF /* Debug */,
+				FF94A0322F3E5A6E001781EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
