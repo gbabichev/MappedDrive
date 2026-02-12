@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF94A0342F3E5A9D001781EF /* MappedDriveHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF94A0522F3E6484001781EF /* MappedDrive.icon in Resources */ = {isa = PBXBuildFile; fileRef = FF94A0512F3E6484001781EF /* MappedDrive.icon */; };
 		FF94A0532F3E6484001781EF /* MappedDrive.icon in Resources */ = {isa = PBXBuildFile; fileRef = FF94A0512F3E6484001781EF /* MappedDrive.icon */; };
 /* End PBXBuildFile section */
@@ -19,15 +18,14 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				FF94A0342F3E5A9D001781EF /* MappedDriveHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF949FF02F3E5485001781EF /* MappedDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappedDriveHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF949FF02F3E5485001781EF /* MappedDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MappedDrive.app; path = "/Users/georgebabichev/Developer/Apps-Code/MappedDrive/build/Debug/MappedDrive.app"; sourceTree = "<absolute>"; };
+		FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MappedDriveHelper.app; path = "/Users/georgebabichev/Developer/Apps-Code/MappedDrive/build/Debug/MappedDriveHelper.app"; sourceTree = "<absolute>"; };
 		FF94A0512F3E6484001781EF /* MappedDrive.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = MappedDrive.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,18 +65,8 @@
 			children = (
 				FF949FF22F3E5485001781EF /* MappedDrive */,
 				FF94A0292F3E5A6D001781EF /* MappedDriveHelper */,
-				FF949FF12F3E5485001781EF /* Products */,
 				FF94A0512F3E6484001781EF /* MappedDrive.icon */,
 			);
-			sourceTree = "<group>";
-		};
-		FF949FF12F3E5485001781EF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FF949FF02F3E5485001781EF /* MappedDrive.app */,
-				FF94A0282F3E5A6D001781EF /* MappedDriveHelper.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +145,7 @@
 			mainGroup = FF949FE72F3E5485001781EF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FF949FF12F3E5485001781EF /* Products */;
+			productRefGroup = FF949FE72F3E5485001781EF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -338,6 +326,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -372,6 +361,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +396,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -441,6 +432,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
