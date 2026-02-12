@@ -16,5 +16,10 @@ struct MappedDriveApp: App {
             ContentView(shareStore: shareStore)
         }
         .menuBarExtraStyle(.window)
+
+        Window("About MappedDrive", id: "about") {
+            AboutView()
+        }
+        .windowResizability(.contentSize)
     }
 }

@@ -10,6 +10,7 @@ import AppKit
 
 struct ContentView: View {
     @ObservedObject var shareStore: ShareStore
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -65,6 +66,10 @@ struct ContentView: View {
                 .disabled(!shareStore.canAddShare)
 
                 Spacer()
+
+                Button("About") {
+                    openWindow(id: "about")
+                }
 
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
