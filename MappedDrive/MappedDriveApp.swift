@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MappedDriveApp: App {
+    @StateObject private var shareStore = ShareStore()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("MappedDrive", systemImage: "externaldrive.connected.to.line.below") {
+            ContentView(shareStore: shareStore)
         }
+        .menuBarExtraStyle(.window)
     }
 }
