@@ -102,12 +102,25 @@ final class ShareStore: ObservableObject {
             return
         }
 
-        let success = NSWorkspace.shared.open(url)
-        if success {
+        if NSWorkspace.shared.open(url) {
             errorMessage = nil
-        } else {
-            errorMessage = "Couldn't open '\(share.displayAddress)' in Finder."
+            return
         }
+
+        if let bookmarkData = share.bookmarkData,
+           let bookmarkURL = resolvedURL(from: bookmarkData) {
+            let didStartAccess = bookmarkURL.startAccessingSecurityScopedResource()
+            let fallbackOpened = NSWorkspace.shared.open(bookmarkURL)
+            if didStartAccess {
+                bookmarkURL.stopAccessingSecurityScopedResource()
+            }
+            if fallbackOpened {
+                errorMessage = nil
+                return
+            }
+        }
+
+        errorMessage = "Couldn't open '\(share.displayAddress)' in Finder."
     }
 
     private func saveShares() {
@@ -170,6 +183,16 @@ final class ShareStore: ObservableObject {
         }
 
         return fullURL.absoluteString
+    }
+
+    private func resolvedURL(from bookmarkData: Data) -> URL? {
+        var isStale = false
+        return try? URL(
+            resolvingBookmarkData: bookmarkData,
+            options: [.withSecurityScope],
+            relativeTo: nil,
+            bookmarkDataIsStale: &isStale
+        )
     }
 
     private func loadShares() {
