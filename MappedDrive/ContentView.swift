@@ -89,7 +89,14 @@ struct ContentView: View {
                 Spacer()
 
                 Button("About") {
+                    NSApp.activate(ignoringOtherApps: true)
                     openWindow(id: "about")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        let aboutWindowID = NSUserInterfaceItemIdentifier("mappedDrive.aboutWindow")
+                        NSApp.windows
+                            .first(where: { $0.identifier == aboutWindowID })?
+                            .makeKeyAndOrderFront(nil)
+                    }
                 }
 
                 Button("Quit") {

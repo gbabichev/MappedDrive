@@ -110,10 +110,14 @@ private struct AboutWindowConfigurator: NSViewRepresentable {
     }
 
     private func configure(_ window: NSWindow) {
+        window.identifier = NSUserInterfaceItemIdentifier("mappedDrive.aboutWindow")
         window.styleMask.insert([.titled, .closable, .fullSizeContentView])
         window.styleMask.remove([.resizable, .miniaturizable])
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
+        if #available(macOS 11.0, *) {
+            window.titlebarSeparatorStyle = .none
+        }
         window.isMovableByWindowBackground = true
 
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
