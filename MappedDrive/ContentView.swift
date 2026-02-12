@@ -49,6 +49,13 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .buttonStyle(.plain)
 
+                        Button {
+                            shareStore.startEditing(share)
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
+                        .buttonStyle(.borderless)
+
                         Button(role: .destructive) {
                             shareStore.remove(share)
                         } label: {
@@ -87,10 +94,16 @@ struct ContentView: View {
 
             
             HStack {
-                Button("Add Share") {
-                    shareStore.addShare()
+                Button(shareStore.isEditingShare ? "Update Share" : "Add Share") {
+                    shareStore.saveEditor()
                 }
                 .disabled(!shareStore.canAddShare)
+
+                if shareStore.isEditingShare {
+                    Button("Cancel") {
+                        shareStore.cancelEditing()
+                    }
+                }
 
                 Spacer()
 

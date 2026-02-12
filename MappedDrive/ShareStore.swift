@@ -15,6 +15,7 @@ final class ShareStore: ObservableObject {
     @Published var newShareName = ""
     @Published var newShareAddress = ""
     @Published var errorMessage: String?
+    @Published private(set) var editingShareID: UUID?
 
     private let defaultsKey = "mappedDrive.smbShares"
 
@@ -23,15 +24,29 @@ final class ShareStore: ObservableObject {
         !newShareAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
+    var isEditingShare: Bool {
+        editingShareID != nil
+    }
+
     init() {
         loadShares()
     }
 
     func addShare() {
+        saveEditor()
+    }
+
+    func saveEditor() {
         let name = newShareName.trimmingCharacters(in: .whitespacesAndNewlines)
         let address = newShareAddress.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        addShare(name: name, address: address, bookmarkData: nil, clearDrafts: true)
+        upsertShare(
+            id: editingShareID,
+            name: name,
+            address: address,
+            bookmarkData: nil,
+            clearDrafts: true
+        )
     }
 
     func addShare(fromSelectedURL url: URL) {
@@ -44,10 +59,38 @@ final class ShareStore: ObservableObject {
             includingResourceValuesForKeys: nil,
             relativeTo: nil
         )
-        addShare(name: resolvedName, address: address, bookmarkData: bookmarkData, clearDrafts: false)
+        upsertShare(
+            id: editingShareID,
+            name: resolvedName,
+            address: address,
+            bookmarkData: bookmarkData,
+            clearDrafts: false
+        )
+
+        // After a successful Open-panel save, clear only the display name draft.
+        if errorMessage == nil {
+            newShareName = ""
+        }
+    }
+
+    func startEditing(_ share: SMBShare) {
+        editingShareID = share.id
+        newShareName = share.name
+        newShareAddress = share.address
+        errorMessage = nil
+    }
+
+    func cancelEditing() {
+        editingShareID = nil
+        newShareName = ""
+        newShareAddress = ""
+        errorMessage = nil
     }
 
     func remove(_ share: SMBShare) {
+        if editingShareID == share.id {
+            cancelEditing()
+        }
         shares.removeAll { $0.id == share.id }
         errorMessage = nil
         saveShares()
@@ -76,13 +119,21 @@ final class ShareStore: ObservableObject {
         }
     }
 
-    private func addShare(name: String, address: String, bookmarkData: Data?, clearDrafts: Bool) {
+    private func upsertShare(id: UUID?, name: String, address: String, bookmarkData: Data?, clearDrafts: Bool) {
         guard !name.isEmpty, !address.isEmpty else {
             errorMessage = "Both name and share address are required."
             return
         }
 
-        shares.append(SMBShare(name: name, address: address, bookmarkData: bookmarkData))
+        if let id, let index = shares.firstIndex(where: { $0.id == id }) {
+            shares[index].name = name
+            shares[index].address = address
+            shares[index].bookmarkData = bookmarkData
+        } else {
+            shares.append(SMBShare(name: name, address: address, bookmarkData: bookmarkData))
+        }
+
+        editingShareID = nil
         if clearDrafts {
             newShareName = ""
             newShareAddress = ""
