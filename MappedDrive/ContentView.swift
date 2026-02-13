@@ -164,6 +164,10 @@ struct ContentView: View {
     }
 
     private func openSharePicker() {
+        // Menu-bar apps can inherit odd default panel paths; always start from Home.
+        let homeDirectory = FileManager.default.homeDirectoryForCurrentUser
+        NSApp.activate(ignoringOtherApps: true)
+
         let panel = NSOpenPanel()
         panel.title = "Select Share"
         panel.message = "Choose a network share folder to save."
@@ -172,6 +176,7 @@ struct ContentView: View {
         panel.canChooseDirectories = true
         panel.canCreateDirectories = false
         panel.allowsMultipleSelection = false
+        panel.directoryURL = homeDirectory
 
         guard panel.runModal() == .OK, let selectedURL = panel.url else {
             return
